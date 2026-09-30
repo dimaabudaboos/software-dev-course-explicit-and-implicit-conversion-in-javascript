@@ -1,32 +1,39 @@
 /*
-
+==================================================
 Part 1: Debugging Challenge
-The JavaScript code below contains intentional bugs related to type conversion.
-Please do the following:
-  - Run the script to observe unexpected outputs.
-  - Debug and fix the errors using explicit type conversion methods like  Number() ,  String() , or    Boolean()  where necessary.
-  - Annotate the code with comments explaining why the fix works.
-
-Part 2: Write Your Own Examples
-Write their own code that demonstrates:
-  - One example of implicit type conversion.
-  - One example of explicit type conversion.
-
-  *We encourage you to:
-Include at least one edge case, like NaN, undefined, or null .
-Use console.log() to clearly show the before-and-after type conversions.
-
+==================================================
 */
 
+// Original Bug: Relying on implicit conversion like "5" - 2.
+// Fix: Use Number() for explicit conversion to clearly define data types and avoid unexpected behavior.
+let inputString = "5";
+let result = Number(inputString) - 2; 
 
-let result = "5" - 2;
-console.log("The result is: " + result);
+// Explicitly convert the numeric result to a String before concatenation
+console.log("The result is: " + String(result));
 
-let isValid = Boolean("false");
-if (isValid) {
-    console.log("This is valid!");
-}
 
-let age = "25";
-let totalAge = age + 5;
-console.log("Total Age: " + totalAge);
+/*
+==================================================
+Part 2: Write Your Own Examples
+==================================================
+*/
+
+// --- 1. Implicit Type Conversion (Edge Case: null) ---
+console.log("\n--- Example 1: Implicit Type Conversion ---");
+let nullValue = null;
+console.log("Before - Value:", nullValue, "| Type:", typeof nullValue);
+
+// Implicit Conversion: JavaScript automatically coerces null to 0 during subtraction (-)
+let implicitResult = nullValue - 10; 
+console.log("After - Value:", implicitResult, "| Type:", typeof implicitResult);
+
+
+// --- 2. Explicit Type Conversion (Edge Case: undefined -> NaN) ---
+console.log("\n--- Example 2: Explicit Type Conversion ---");
+let undefinedValue = undefined;
+console.log("Before - Value:", undefinedValue, "| Type:", typeof undefinedValue);
+
+// Explicit Conversion: Converting undefined to a Number explicitly returns NaN (Not a Number)
+let explicitResult = Number(undefinedValue); 
+console.log("After - Value:", explicitResult, "| Type:", typeof explicitResult);
